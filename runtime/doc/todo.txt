@@ -171,14 +171,49 @@ Goes away when disabling the swap file. (might1, Feb 16)
 MS-Windows: Crash opening very long file name starting with "\\".
 (Christian Brock, 2012 Jun 29)
 
+Patch to improve IME handling in the MS-Windows console.
+(Ken Takata, 2015 Aug 8)
+
+Patch to support Unicode I/O in the MS-Windows console.
+(Ken Takata, 2015 Aug 8)  Also by Yasuhiro Matsumoto.
+
 The argument for "-S" is not taken literally, the ":so" command expands
 wildcards.  Add a ":nowild" command modifier?  (ZyX, 2015 March 4)
+
+Proposal to make options.txt easier to read. (Arnaud Decara, 2015 Aug 5)
 
 Build with Python on Mac does not always use the right library.
 (Kazunobu Kuriyama, 2015 Mar 28)
 
 ml_updatechunk() is slow when retrying for another encoding. (John Little,
 2014 Sep 11)
+
+Patch to fix that "zt" in diff mode doesn't always work properly.
+(Christian Brabandt, 2015 Aug 6)  Doesn't fix the problem?
+
+Patch to fix checking global option value when not using it.
+(Arnaud Decara, 2015 Jul 23)
+
+When 'showbreak' is set repeating a Visual operation counts the size of the
+'showbreak' text as part of the operation. (Axel Bender, 2015 Jul 20)
+
+Patch to apply 'fileformats' when starting Vim. (Mike Williams, 2015 Jul 22)
+
+Patch for matchit plugin related to multibyte chars. (Ken Takata, 2015 Jul 22)
+
+Patch for multi-byte characters in langmap and applying a mapping on them.
+(Christian Brabandt, 2015 Jun 12, update July 25)
+Is this the right solution?
+
+Patch to add grepfile(). (Scott Prager, 2015 May 26)
+Work in progress.
+
+Patch for global-local options consistency. (Arnaud Decara, 2015 Jul 22)
+Is this right?
+
+Patch to make getregtype() return the right size for non-linux systems.
+(Yasuhiro Matsumoto, 2014 Jul 8)
+Breaks test_eval.  Inefficient, can we only compute y_width when needed?
 
 Patch to use different terminal mode settings for system(). (Hayaki Saito)
 Does this work for everybody?
@@ -324,8 +359,6 @@ arguments.
 
 Patch to add :arglocal and :arglists. (Marcin Szamotulski, 2014 Aug 6)
 
-PHP syntax is extremely slow. (Anhad Jai Singh, 2014 Jan 19)
-
 Spell files use a latin single quote. Unicode also has another single quote:
 0x2019.  (Ron Aaron, 2014 Apr 4)
 New OpenOffice spell files support this with ICONV.  But they are not
@@ -446,8 +479,6 @@ Patch to define macros for hardcoded values. (Elias Diem, 2013 Dec 14)
 
 Several syntax file match "^\s*" which may get underlined if that's in the
 highlight group.  Add a "\zs" after it?
-
-Go through more coverity reports.
 
 The undo file name can get too long. (Issue 346)
 For the path use a hash instead of dir%dir%dir%name  hash%name.
@@ -656,6 +687,8 @@ after starting up?
 
 Patch to add ":ldo" and ":cdo", execute commands over quickfix list and
 location list. (Yegappan Lakshmanan, 2013 Jun 2, update 2015 Mar 21)
+Update by Florian Walch, 2015 Jul 1.
+Update by Yegappan, 2015 Jul 24.
 
 8   "stl" and "stlnc" in 'fillchars' don't work for multi-byte characters.
     Patch by Christian Wellenbrock, 2013 Jul 5.
@@ -841,7 +874,7 @@ effects?  (Christian Brabandt, 2012 Aug 5, Update 2013 Aug 12)
 Would also need to do this for spellbadword() and spellsuggest().
 
 Patch for variable tabstops.  On github (Christian Brabandt, 2014 May 15)
-Update Aug 16 (email).
+Update 2015 Jul 25 (email).
 
 On 64 bit MS-Windows "long" is only 32 bits, but we sometimes need to store a
 64 bits value.  Change all number options to use nropt_T and define it to the
@@ -1105,8 +1138,8 @@ Dominique can't reproduce it.
 ":function f(x) keepjumps" creates a function where every command is executed
 like it has ":keepjumps" before it.
 
-Coverity: ask someone to create new user: Dominique.
-Check if there are new reported defects: http://scan.coverity.com/rung2.html
+Coverity: Check if there are new reported defects:
+https://scan.coverity.com/projects/241
 
 Patch to support :undo absolute jump to file save number. (Christian Brabandt,
 2010 Nov 5)
@@ -1142,7 +1175,7 @@ string value.
 
 Invalid read error in Farsi mode. (Dominique Pelle, 2009 Aug 2)
 
-For running gvim on an USB stick: avoid the OLE registration.  Use a command
+For running gvim on a USB stick: avoid the OLE registration.  Use a command
 line argument -noregister.
 
 When using an expression in 'statusline' leading white space sometimes goes
@@ -4095,8 +4128,6 @@ Autocommands:
 8   Autocommand for when modified files have been found, when getting input
     focus again (e.g., FileChangedFocus).
     Check when: getting focus, jumping to another buffer, ...
-7   Autocommand for when an option is changed.  Match buffer name or option
-    name?
 8   Autocommands should not change registers.  And marks?  And the jumplist?
     And anything else?  Add a command to save and restore these things.
 8   Add autocommands, user functions and user commands to ":mkvimrc".
